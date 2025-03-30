@@ -85,7 +85,9 @@ function getDeltaFunction(initialParams) {
         // Merging initial params with updated ones
         const { a, b, c } = { ...initialParams, ...updatedParams };
 
-        if (a === undefined || b === undefined || c === undefined) {
+        const areValidNumbers = a !== undefined && b !==undefined && c !== undefined;
+
+        if (!areValidNumbers) {
             return NaN;
         }
 
@@ -343,17 +345,17 @@ getRandomABC(); // returns a random string that is a, A, b, B, c, or C
 
 function getPrefixedStringGenerator(prefix) {
     return function(string) {
-        return prefix + string;
+        return prefix.endsWith(".") ? `${prefix} ${string}` : `${prefix}${string}`;
     };
 }
 
 const prefixStringWithMister = getPrefixedStringGenerator("Mr.");
-console.log(prefixStringWithMister(" John")); // Mr. John
-console.log(prefixStringWithMister(" Adam")); // Mr. Adam
+console.log(prefixStringWithMister("John")); // Mr. John
+console.log(prefixStringWithMister("Adam")); // Mr. Adam
 
 const prefixStringWithMiss = getPrefixedStringGenerator("Ms.");
-console.log(prefixStringWithMiss(" Kate")); // Ms. Kate
-console.log(prefixStringWithMiss(" Julie")); // Ms. Julie
+console.log(prefixStringWithMiss("Kate")); // Ms. Kate
+console.log(prefixStringWithMiss("Julie")); // Ms. Julie
 
 const prefixStringWithNegative = getPrefixedStringGenerator("un");
 console.log(prefixStringWithNegative("happy")); // unhappy
