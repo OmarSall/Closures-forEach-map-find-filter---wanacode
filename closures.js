@@ -75,3 +75,20 @@ function getNegativeNumbers(numbersArray) {
 }
 
 getNegativeNumbers([1, -5, -3, 12, -152]); // [-5, -3, -152]
+
+//HomeWork
+
+// 1. write the getDeltaFunction
+
+
+
+// delta = b*b - 4*a*c
+const getDelta = getDeltaFunction({ a: 1, b: 2, c: 3 });
+getDelta(); // -8
+getDelta({ b: 12 }); // 132
+getDelta({ a: 4, b: 10 }); // 52
+getDelta({ a: 4, b: 0 }); // -48
+
+// The nested function returns NaN if any of the arguments are missing
+getDeltaFunction({ a: 1, c: 3 })(); // NaN
+getDeltaFunction({ a: 1, c: 3 })({ b: 15 }); // 213
